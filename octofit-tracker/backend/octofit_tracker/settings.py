@@ -64,18 +64,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# MongoDB Database configuration
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'octofit_db',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017',
-        }
-    }
-}
-
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
