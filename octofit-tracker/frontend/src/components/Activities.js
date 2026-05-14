@@ -20,13 +20,34 @@ const Activities = () => {
   }, [endpoint]);
 
   return (
-    <div>
-      <h2>Activities</h2>
-      <ul>
-        {activities.map((activity, idx) => (
-          <li key={activity.id || idx}>{activity.name || JSON.stringify(activity)}</li>
-        ))}
-      </ul>
+    <div className="card shadow mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-primary">Activities</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover align-middle">
+            <thead className="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {activities.length === 0 ? (
+                <tr><td colSpan="3" className="text-center">No activities found.</td></tr>
+              ) : (
+                activities.map((activity, idx) => (
+                  <tr key={activity.id || idx}>
+                    <td>{activity.id || idx + 1}</td>
+                    <td>{activity.name || '-'}</td>
+                    <td>{activity.description || '-'}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

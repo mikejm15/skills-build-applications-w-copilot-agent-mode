@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Activities from './components/Activities';
@@ -13,7 +14,7 @@ function App() {
     <Router>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">OctoFit Tracker</Link>
+          <Link className="navbar-brand fw-bold" to="/">OctoFit Tracker</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -39,14 +40,25 @@ function App() {
         </div>
       </nav>
       <div className="container">
-        <Routes>
-          <Route path="/activities" element={<Activities />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/teams" element={<Teams />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/workouts" element={<Workouts />} />
-          <Route path="/" element={<h2>Welcome to OctoFit Tracker!</h2>} />
-        </Routes>
+        <div className="row justify-content-center">
+          <div className="col-lg-10">
+            <Routes>
+              <Route path="/activities" element={<Activities />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/teams" element={<Teams />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/workouts" element={<Workouts />} />
+              <Route path="/" element={
+                <div className="card text-center shadow p-4">
+                  <h1 className="display-4 mb-3">Welcome to OctoFit Tracker!</h1>
+                  <p className="lead">Track your fitness, join teams, and compete on the leaderboard.</p>
+                  <Link to="/activities" className="btn btn-primary m-2">View Activities</Link>
+                  <Link to="/workouts" className="btn btn-success m-2">View Workouts</Link>
+                </div>
+              } />
+            </Routes>
+          </div>
+        </div>
       </div>
     </Router>
   );

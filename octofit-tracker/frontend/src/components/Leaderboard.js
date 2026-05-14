@@ -20,13 +20,34 @@ const Leaderboard = () => {
   }, [endpoint]);
 
   return (
-    <div>
-      <h2>Leaderboard</h2>
-      <ul>
-        {leaders.map((leader, idx) => (
-          <li key={leader.id || idx}>{leader.name || JSON.stringify(leader)}</li>
-        ))}
-      </ul>
+    <div className="card shadow mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-success">Leaderboard</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover align-middle">
+            <thead className="table-dark">
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {leaders.length === 0 ? (
+                <tr><td colSpan="3" className="text-center">No leaderboard data.</td></tr>
+              ) : (
+                leaders.map((leader, idx) => (
+                  <tr key={leader.id || idx}>
+                    <td>{idx + 1}</td>
+                    <td>{leader.name || leader.username || '-'}</td>
+                    <td>{leader.score || '-'}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
